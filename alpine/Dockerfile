@@ -6,12 +6,13 @@ WORKDIR /tmp
 RUN set -ex; \
 	wget -O src.tar.gz https://github.com/ajvb/kala/archive/v${VERSION}.tar.gz; \
 	tar -xzf src.tar.gz; \
-	cd kala-${VERSION};\
+	mv kala-${VERSION} kala; \
+	cd kala; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
 FROM alpine:3.11
 COPY --from=builder /tmp/main /usr/local/bin/kala
-COPY --from=builder /tmp/kala-${VERSION}/webui /app/webui
+COPY --from=builder /tmp/kala/webui /app/webui
 RUN apk add --no-cache \
 	bash \
 	curl \
