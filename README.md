@@ -65,6 +65,6 @@ docker run --rm --name kala \
   ```dockerfile
   FROM python:3-slim
   COPY --from=sstc/kala:scratch /usr/local/bin/kala /usr/local/bin/kala
-  CMD ["kala", "serve", "--jobdb=boltdb", "--boltpath=/tmp"]
+  CMD ["kala", "serve", "--bolt-path=/tmp"]
   EXPOSE 8000
   ```

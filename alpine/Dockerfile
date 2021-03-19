@@ -11,6 +11,7 @@ RUN set -ex; \
 
 FROM alpine:3.11
 COPY --from=builder /tmp/main /usr/local/bin/kala
+COPY --from=builder /tmp/kala-${VERSION}/webui /app/webui
 RUN apk add --no-cache \
 	bash \
 	curl \
@@ -20,5 +21,5 @@ RUN apk add --no-cache \
 	jq
 WORKDIR /app
 # change default db root path to /tmp, let user mount the volume easier
-CMD ["kala", "serve", "--jobdb=boltdb", "--boltpath=/tmp"]
+CMD ["kala", "serve", "--bolt-path=/tmp"]
 EXPOSE 8000

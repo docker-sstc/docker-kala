@@ -11,7 +11,8 @@ RUN set -ex; \
 
 FROM scratch
 COPY --from=builder /tmp/main /usr/local/bin/kala
+COPY --from=builder /tmp/kala-${VERSION}/webui /app/webui
 WORKDIR /app
 # change default db root path to /tmp, let user mount the volume easier
-CMD ["kala", "serve", "--jobdb=boltdb", "--boltpath=/tmp"]
+CMD ["kala", "serve", "--bolt-path=/tmp"]
 EXPOSE 8000
