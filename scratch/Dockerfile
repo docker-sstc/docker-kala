@@ -13,5 +13,5 @@ FROM scratch
 COPY --from=builder /tmp/main /usr/local/bin/kala
 WORKDIR /app
 # change default db root path to /tmp, let user mount the volume easier
-CMD ["kala", "run", "--jobdb=boltdb", "--boltpath=/tmp"]
+CMD ["kala", "serve", "--jobdb=boltdb", "--boltpath=/tmp"]
 EXPOSE 8000

@@ -24,5 +24,5 @@ RUN set -ex; \
 	rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 # change default db root path to /tmp, let user mount the volume easier
-CMD ["kala", "run", "--jobdb=boltdb", "--boltpath=/tmp"]
+CMD ["kala", "serve", "--jobdb=boltdb", "--boltpath=/tmp"]
 EXPOSE 8000

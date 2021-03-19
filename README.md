@@ -12,7 +12,7 @@ Build from official release
 docker run -d --name kala \
   -p 8000:8000 \
   -v /tmp/kala:/tmp \
-  kala
+  sstc/kala
 ```
 
 ```console
@@ -33,7 +33,7 @@ docker run -d --name kala \
   -p 8000:8000 \
   --link mysql \
   sstc/kala \
-  kala run \
+  kala serve \
   --jobdb=mariadb \
   --jobdb-address="(mysql:3306)/test" \
   --jobdb-username=root \
@@ -47,7 +47,7 @@ docker run --rm --name kala \
   -p 8000:8000 \
   -v /host/secret:/path/to \
   sstc/kala \
-  kala run \
+  kala serve \
   --jobdb=mysql \
   --jobdb-address="(93.184.216.34:3306)/kala?tls=custom" \
   --jobdb-username="root" \
@@ -65,6 +65,6 @@ docker run --rm --name kala \
   ```dockerfile
   FROM python:3-slim
   COPY --from=sstc/kala:scratch /usr/local/bin/kala /usr/local/bin/kala
-  CMD ["kala", "run", "--jobdb=boltdb", "--boltpath=/tmp"]
+  CMD ["kala", "serve", "--jobdb=boltdb", "--boltpath=/tmp"]
   EXPOSE 8000
   ```
