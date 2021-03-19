@@ -23,6 +23,10 @@ RUN set -ex; \
 	openssh-client \
 	dnsutils \
 	jq \
+	python3 \
+	nodejs \
+	ruby \
+	lua \
 	; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
