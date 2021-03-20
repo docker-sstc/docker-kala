@@ -25,7 +25,7 @@ RUN set -ex; \
 	jq \
 	python3 \
 	php \
-	nodejs \
+	nodejs npm \
 	ruby \
 	lua5.3 \
 	; \
