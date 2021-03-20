@@ -30,7 +30,8 @@ RUN set -ex; \
 	lua5.3 \
 	; \
 	apt-get clean; \
-	rm -rf /var/lib/apt/lists/*
+	rm -rf /var/lib/apt/lists/* \
+	npm install npm@latest -g
 
 WORKDIR /app
 # change default db root path to /tmp, let user mount the volume easier
