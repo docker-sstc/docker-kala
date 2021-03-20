@@ -13,8 +13,6 @@ RUN set -ex; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
 FROM debian:stable-slim
-COPY --from=builder /tmp/main /usr/local/bin/kala
-COPY --from=builder /tmp/kala/webui /app/webui
 RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
@@ -30,9 +28,9 @@ RUN set -ex; \
 	lua5.3 \
 	; \
 	apt-get clean; \
-	rm -rf /var/lib/apt/lists/* \
-	npm install npm@latest -g
-
+	rm -rf /var/lib/apt/lists/*
+COPY --from=builder /tmp/main /usr/local/bin/kala
+COPY --from=builder /tmp/kala/webui /app/webui
 WORKDIR /app
 # change default db root path to /tmp, let user mount the volume easier
 CMD ["kala", "serve", "--bolt-path=/tmp"]

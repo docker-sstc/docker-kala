@@ -49,7 +49,7 @@ docker run --rm --name kala \
   sstc/kala \
   kala serve \
   --jobdb=mysql \
-  --jobdb-address="(93.184.216.34:3306)/kala?tls=custom" \
+  --jobdb-address="(8.8.4.4:3306)/kala?tls=custom" \
   --jobdb-username="root" \
   --jobdb-password="" \
   --jobdb-tls-capath="/path/to/server-ca.pem" \
@@ -65,6 +65,6 @@ docker run --rm --name kala \
   ```dockerfile
   FROM python:3-slim
   COPY --from=sstc/kala:scratch /usr/local/bin/kala /usr/local/bin/kala
-  CMD ["kala", "serve", "--bolt-path=/tmp"]
-  EXPOSE 8000
+  COPY --from=sstc/kala:scratch /app/webui /app/webui
+  ...
   ```

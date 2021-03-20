@@ -1,0 +1,15 @@
+${TEMPLATE_BUILDER}
+
+FROM debian:stable-slim
+RUN set -ex; \
+	apt-get update; \
+	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+	curl \
+	rsync \
+	openssh-client \
+	dnsutils \
+	jq \
+	; \
+	apt-get clean; \
+	rm -rf /var/lib/apt/lists/*
+${TEMPLATE_FACADE}

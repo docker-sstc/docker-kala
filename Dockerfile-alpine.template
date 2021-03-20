@@ -1,0 +1,11 @@
+${TEMPLATE_BUILDER}
+
+FROM alpine:3.11
+RUN apk add --no-cache \
+	bash \
+	curl \
+	rsync \
+	openssh-client \
+	bind-tools \
+	jq
+${TEMPLATE_FACADE}
