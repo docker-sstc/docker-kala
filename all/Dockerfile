@@ -29,6 +29,9 @@ RUN set -ex; \
 	; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
+RUN set -ex; \
+	npm -g install npm \
+	npm prune
 COPY --from=builder /tmp/main /usr/local/bin/kala
 COPY --from=builder /tmp/kala/webui /app/webui
 WORKDIR /app

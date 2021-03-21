@@ -17,4 +17,7 @@ RUN set -ex; \
 	; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
+RUN set -ex; \
+	npm -g install npm \
+	npm prune
 ${TEMPLATE_FACADE}

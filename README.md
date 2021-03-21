@@ -2,11 +2,16 @@
 
 Build from official release
 
+## Tags
+
+- [`sstc/kala:all`](https://github.com/up9cloud/docker-kala/blob/master/all/Dockerfile): latest + `python3`, `php`, `nodejs`, `ruby`, `lua5.3`
+- [`sstc/kala:alpine`](https://github.com/up9cloud/docker-kala/blob/master/alpine/Dockerfile): alpine based with `bash`, `curl`, `rsync`, `openssh-client`, `bind-tools`
+- [`sstc/kala:debian`](https://github.com/up9cloud/docker-kala/blob/master/Dockerfile): debian based with some basic stuff `curl`, `rsync`, `openssh-client`, `dnsutils`, `jq`
+- [`sstc/kala:scratch`](https://github.com/up9cloud/docker-kala/blob/master/scratch/Dockerfile), `sstc/kala:latest`: only executable
+
 ## Usage
 
-### BoltDB
-
-> This is default db
+### Default with BoltDB
 
 ```bash
 docker run -d --name kala \
@@ -60,11 +65,12 @@ docker run --rm --name kala \
 
 ## Need to know
 
-- Because this image only pre-installed few necessaries. If you want to execute other programs in the container, you might want to build your own image, e.q. python:
+- `Build by your own image`: because this image only has few pre-installed programs. If you want to execute others in the container, you might want to build your own, e.q. python:
 
   ```dockerfile
   FROM python:3-slim
   COPY --from=sstc/kala:scratch /usr/local/bin/kala /usr/local/bin/kala
   COPY --from=sstc/kala:scratch /app/webui /app/webui
+  WORKDIR /app
   ...
   ```

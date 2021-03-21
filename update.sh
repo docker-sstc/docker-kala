@@ -17,7 +17,13 @@ function generate() {
 	fi
 }
 
-generate ./Dockerfile-latest.template ./Dockerfile
-generate ./Dockerfile-all.template ./all/Dockerfile
-generate ./Dockerfile-alpine.template ./alpine/Dockerfile
-generate ./Dockerfile-scratch.template ./scratch/Dockerfile
+function generate_by_tag() {
+	local tag="$1"
+	local template="./Dockerfile-$tag.template"
+	local target="./$tag/Dockerfile"
+	generate "$template" "$target"
+}
+
+for tag in all alpine debian scratch; do
+	generate_by_tag "$tag"
+done
