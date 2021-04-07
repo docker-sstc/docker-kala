@@ -4,10 +4,18 @@ Build from official release
 
 ## Tags
 
-- [`sstc/kala:all`](https://github.com/up9cloud/docker-kala/blob/master/all/Dockerfile): latest + `python3`, `php`, `nodejs`, `ruby`, `lua5.3`
-- [`sstc/kala:alpine`](https://github.com/up9cloud/docker-kala/blob/master/alpine/Dockerfile): alpine based with `bash`, `curl`, `rsync`, `openssh-client`, `bind-tools`
-- [`sstc/kala:debian`](https://github.com/up9cloud/docker-kala/blob/master/Dockerfile): debian based with some basic stuff `curl`, `rsync`, `openssh-client`, `dnsutils`, `jq`
-- [`sstc/kala:scratch`](https://github.com/up9cloud/docker-kala/blob/master/scratch/Dockerfile), `sstc/kala:latest`: only executable
+- [`sstc/kala:all`](https://github.com/up9cloud/docker-kala/blob/master/all/Dockerfile):
+  - `sstc/kala:alpine` +
+  - `python3`, `php`, `nodejs`, `ruby`, `lua5.3`
+  - `chromium` + `node_modules/playwright-chromium`-
+- [`sstc/kala:alpine`](https://github.com/up9cloud/docker-kala/blob/master/alpine/Dockerfile):
+  - alpine based +
+  - `bash`, `curl`, `rsync`, `openssh-client`, `bind-tools`
+- [`sstc/kala:debian`](https://github.com/up9cloud/docker-kala/blob/master/Dockerfile):
+  - debian based +
+  - `curl`, `rsync`, `openssh-client`, `dnsutils`, `jq`
+- [`sstc/kala:scratch`, `sstc/kala:latest`](https://github.com/up9cloud/docker-kala/blob/master/scratch/Dockerfile):
+  - only kala executable
 
 ## Usage
 
