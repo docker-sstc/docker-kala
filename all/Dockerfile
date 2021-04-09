@@ -35,8 +35,9 @@ RUN set -e; \
 ENV NODE_PATH=/usr/lib/node_modules
 RUN set -e; \
 	if [ "/usr/lib/node_modules" != "$(npm root -g)" ]; then \
-	echo >&2 "NODE_PATH invalid" && exit 2; \
+		echo >&2 "NODE_PATH invalid" && exit 2; \
 	fi
+# Default playwright browsers path: https://github.com/microsoft/playwright/blob/master/src/utils/registry.ts#L185
 # playwright: https://github.com/Zenika/alpine-chrome/blob/master/with-playwright/Dockerfile
 # puppeteer: https://github.com/Zenika/alpine-chrome/blob/master/with-puppeteer/Dockerfile
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
