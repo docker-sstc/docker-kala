@@ -32,16 +32,25 @@ RUN set -e; \
 	lua5.3
 
 # Essentials for scripts
-# playwright: https://github.com/Zenika/alpine-chrome/blob/master/with-playwright/Dockerfile
-ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
-	PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser \
-	NODE_PATH=/usr/lib/node_modules
+ENV NODE_PATH=/usr/lib/node_modules
 RUN set -e; \
 	if [ "/usr/lib/node_modules" != "$(npm root -g)" ]; then \
 	echo >&2 "NODE_PATH invalid" && exit 2; \
-	fi \
-	; \
-	npm -g install playwright-chromium
+	fi
+# playwright: https://github.com/Zenika/alpine-chrome/blob/master/with-playwright/Dockerfile
+# puppeteer: https://github.com/Zenika/alpine-chrome/blob/master/with-puppeteer/Dockerfile
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
+	PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser \
+	PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 \
+	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+RUN set -e; \
+	npm -g install \
+		playwright-chromium \
+		puppeteer \
+		puppeteer-extra \
+		puppeteer-extra-plugin-stealth \
+		puppeteer-extra-plugin-user-preferences \
+		puppeteer-extra-plugin-user-data-dir
 
 ENTRYPOINT ["tini", "--"]
 COPY --from=builder /tmp/main /usr/local/bin/kala
