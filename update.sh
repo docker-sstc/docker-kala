@@ -1,4 +1,6 @@
-#!/bin/bash -Eeuo pipefail
+#!/bin/bash
+
+set -Eeuo pipefail
 
 cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
