@@ -5,7 +5,7 @@ Build from official release
 ## Tags
 
 - [`sstc/kala:all`](https://github.com/up9cloud/docker-kala/blob/master/all/Dockerfile):
-  - `sstc/kala:alpine` +
+  - `sstc/kala:debian` +
   - `python3`, `php`, `nodejs`, `ruby`, `lua5.3`
   - `chromium` + `node_modules/playwright-chromium` + `node_modules/puppeteer`
 - [`sstc/kala:alpine`](https://github.com/up9cloud/docker-kala/blob/master/alpine/Dockerfile):

@@ -13,7 +13,6 @@ RUN set -ex; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
 FROM debian:stable-slim
-
 RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
@@ -33,9 +32,9 @@ RUN set -ex; \
 # In the mean time, install all famous script languages
 	curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+	nodejs npm \
 	python3 \
 	php \
-	nodejs npm \
 	ruby \
 	lua5.3 \
 	; \
