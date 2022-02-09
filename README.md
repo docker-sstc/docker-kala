@@ -1,6 +1,6 @@
 # docker-kala
 
-Build from official release
+Build from [official release](https://github.com/ajvb/kala)
 
 ## Tags
 

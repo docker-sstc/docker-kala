@@ -16,26 +16,38 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - uses: docker/build-push-action@v2
+    - name: :scratch
+      uses: docker/build-push-action@v2
       with:
         push: true
         file: ./scratch/Dockerfile
         tags: ${{ steps.meta.outputs.tags }}
-    - uses: docker/build-push-action@v2
+    - name: :debian
+      uses: docker/build-push-action@v2
       with:
         push: true
         file: ./debian/Dockerfile
         tags: sstc/kala:debian
-    - uses: docker/build-push-action@v2
+    - name: :alpine
+      uses: docker/build-push-action@v2
       with:
         push: true
         file: ./alpine/Dockerfile
         tags: sstc/kala:alpine
-    - uses: docker/build-push-action@v2
+    - name: :all
+      uses: docker/build-push-action@v2
       with:
         push: true
         file: ./all/Dockerfile
         tags: sstc/kala:all
+    - name: push README to Dockerhub
+      uses: christian-korneck/update-container-description-action@v1
+      env:
+        DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKER_PASS: ${{ secrets.DOCKERHUB_TOKEN }}
+      with:
+        destination_container_repo: sstc/kala
+        short_description: 'Dockerize kala environment'
     - uses: up9cloud/action-notify@master
       if: cancelled() == false
       env:
