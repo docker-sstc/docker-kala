@@ -12,7 +12,7 @@ RUN set -ex; \
 	cd kala; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
-FROM debian:stable-slim
+FROM debian:11-slim
 RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \

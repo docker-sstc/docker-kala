@@ -12,7 +12,7 @@ RUN set -ex; \
 	cd kala; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
-FROM alpine:3.11
+FROM alpine:3.15
 RUN apk add --no-cache \
 	bash \
 	curl \

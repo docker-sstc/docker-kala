@@ -53,7 +53,7 @@ docker run -d --name kala \
   --jobdb-password=
 ```
 
-> remote, GCP
+> GCP mysql with TLS
 
 ```bash
 docker run --rm --name kala \
@@ -73,12 +73,32 @@ docker run --rm --name kala \
 
 ## Need to know
 
-- `Build by your own image`: because this image only has few pre-installed programs. If you want to execute others in the container, you might want to build your own, e.q. python:
+- `Build by your own image`: because this image only has few pre-installed programs. If you want to execute others in the container, you might want to build your own, e.q.
 
   ```dockerfile
-  FROM python:3-slim
-  COPY --from=sstc/kala:scratch /usr/local/bin/kala /usr/local/bin/kala
-  COPY --from=sstc/kala:scratch /app/webui /app/webui
-  WORKDIR /app
-  ...
+  FROM sstc/kala:all
+  RUN set -ex; \
+    apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+    julia \
+    ; \
+    apt-get clean; \
+    rm -rf /var/lib/apt/lists/*
   ```
+
+  ```bash
+  docker build -t kala .
+  docker run --rm kala julia -e 'println("hello world")'
+  ```
+
+## Dev memo
+
+> Bump base image version
+
+- Update version variables in file `./update.sh`
+- Execute `./update.sh`
+
+> Bump kala version
+
+- Update version in file `Dockerfile-0-builder`
+- Execute `./update.sh`
