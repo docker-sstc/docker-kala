@@ -12,13 +12,14 @@ RUN set -ex; \
 	cd kala; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
-FROM sstc/headful-chromium:latest
+FROM sstc/headful-chromium:debian-11
 RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 		tini \
 		curl \
 		rsync \
+		openssh-client \
 		dnsutils \
 		jq \
 	; \

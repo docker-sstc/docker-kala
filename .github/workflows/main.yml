@@ -40,6 +40,12 @@ jobs:
         push: true
         file: ./all/Dockerfile
         tags: sstc/kala:all
+    - name: :all-debian
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        file: ./all/Dockerfile
+        tags: sstc/kala:all-debian
     - uses: actions/checkout@v2
     - name: push README to Dockerhub
       uses: christian-korneck/update-container-description-action@v1

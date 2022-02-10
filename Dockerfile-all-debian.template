@@ -1,12 +1,13 @@
 ${TEMPLATE_BUILDER}
 
-FROM ${ALL_IMAGE}
+FROM ${ALL_DEBIAN_IMAGE}
 RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 		tini \
 		curl \
 		rsync \
+		openssh-client \
 		dnsutils \
 		jq \
 	; \

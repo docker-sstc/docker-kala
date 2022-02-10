@@ -5,17 +5,21 @@ Build from [official release](https://github.com/ajvb/kala)
 ## Tags
 
 - [`sstc/kala:all`](https://github.com/up9cloud/docker-kala/blob/master/all/Dockerfile):
-  - `sstc/kala:debian` +
+  - `chromium`, `firefox`
+  - `node_modules/playwright`
   - `python3`, `php`, `nodejs`, `ruby`, `lua5.3`
-  - `chromium` + `node_modules/playwright-chromium` + `node_modules/puppeteer`
-- [`sstc/kala:alpine`](https://github.com/up9cloud/docker-kala/blob/master/alpine/Dockerfile):
-  - alpine based +
-  - `bash`, `curl`, `rsync`, `openssh-client`, `bind-tools`
-- [`sstc/kala:debian`](https://github.com/up9cloud/docker-kala/blob/master/Dockerfile):
-  - debian based +
   - `curl`, `rsync`, `openssh-client`, `dnsutils`, `jq`
+- [`sstc/kala:all-debian`](https://github.com/up9cloud/docker-kala/blob/master/all-debian/Dockerfile):
+  - `chromium`
+  - `node_modules/playwright`
+  - `python3`, `php`, `nodejs`, `ruby`, `lua5.3`
+  - `curl`, `rsync`, `openssh-client`, `dnsutils`, `jq`
+- [`sstc/kala:debian`](https://github.com/up9cloud/docker-kala/blob/master/Dockerfile):
+  - `curl`, `rsync`, `openssh-client`, `dnsutils`, `jq`
+- [`sstc/kala:alpine`](https://github.com/up9cloud/docker-kala/blob/master/alpine/Dockerfile):
+  - `bash`, `curl`, `rsync`, `openssh-client`, `bind-tools`
 - [`sstc/kala:scratch`, `sstc/kala:latest`](https://github.com/up9cloud/docker-kala/blob/master/scratch/Dockerfile):
-  - only kala executable
+  - Only kala executable
 
 ## Usage
 
