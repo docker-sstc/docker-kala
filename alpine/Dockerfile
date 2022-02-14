@@ -15,10 +15,10 @@ RUN set -ex; \
 FROM alpine:3.15
 RUN apk add --no-cache \
 	bash \
-	curl \
-	rsync \
-	openssh-client \
 	bind-tools \
+	openssh-client \
+	rsync \
+	curl \
 	jq
 COPY --from=builder /tmp/main /usr/local/bin/kala
 COPY --from=builder /tmp/kala/webui /app/webui

@@ -3,9 +3,9 @@ ${TEMPLATE_BUILDER}
 FROM ${ALPINE_IMAGE}
 RUN apk add --no-cache \
 	bash \
-	curl \
-	rsync \
-	openssh-client \
 	bind-tools \
+	openssh-client \
+	rsync \
+	curl \
 	jq
 ${TEMPLATE_FACADE}

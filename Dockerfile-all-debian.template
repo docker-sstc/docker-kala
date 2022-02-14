@@ -5,10 +5,11 @@ RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 		tini \
-		curl \
-		rsync \
-		openssh-client \
+		iputils-ping \
 		dnsutils \
+		openssh-client \
+		rsync \
+		curl \
 		jq \
 	; \
 	# In the mean time, install all famous script languages

@@ -16,11 +16,12 @@ FROM debian:11-slim
 RUN set -ex; \
 	apt-get update; \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-	curl \
-	rsync \
-	openssh-client \
-	dnsutils \
-	jq \
+		iputils-ping \
+		dnsutils \
+		openssh-client \
+		rsync \
+		curl \
+		jq \
 	; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
