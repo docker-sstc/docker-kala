@@ -6,7 +6,7 @@ cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 ALL_DEBIAN_IMAGE=sstc/headful-chromium:debian-11
 ALL_IMAGE=sstc/headful-chromium:latest
-ALPINE_IMAGE=alpine:3.15
+ALPINE_IMAGE=alpine:3.17
 # https://github.com/debuerreotype/docker-debian-artifacts/blob/dist-amd64/stable/Release
 DEBIAN_IMAGE=debian:11-slim
 

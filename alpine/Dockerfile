@@ -12,7 +12,7 @@ RUN set -ex; \
 	cd kala; \
 	CGO_ENABLED=0 go build -o /tmp/main
 
-FROM alpine:3.15
+FROM alpine:3.17
 RUN apk add --no-cache \
 	bash \
 	bind-tools \
