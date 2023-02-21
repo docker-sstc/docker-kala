@@ -8,6 +8,6 @@ RUN set -ex; \
 	# tar -xzf src.tar.gz; \
 	# mv kala-${VERSION} kala; \
 	# Because of https://github.com/ajvb/kala/pull/250, temporary use my personal repo
-	git clone https://github.com/up9cloud/kala.git; \
+	git clone https://github.com/ajvb/kala.git; \
 	cd kala; \
 	CGO_ENABLED=0 go build -o /tmp/main
